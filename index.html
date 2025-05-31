@@ -20,5 +20,22 @@
         <a href="help.html">Help</a>
     </div>
     </nav>
+    <div class="container">
+    <h1>Word Counter</h1>
+    <p class="subtitle">Type or paste your text below to see the counts update live.</p>
+    <div class="counters" role="region" aria-live="polite" aria-label="Text statistics">
+      <div class="counter" id="wordCount">Words: 0</div>
+      <div class="counter" id="paragraphCount">Paragraphs: 0</div>
+      <div class="counter" id="characterCount">Characters: 0</div>
+    </div>
+    <div class="buttons-row">
+      <button id="clearBtn" type="button" aria-label="Clear text">Clear</button>
+    </div>
+    <textarea id="textInput" placeholder="Start typing or paste your text here..." aria-describedby="statsDescription"></textarea>
+    <p id="statsDescription" class="visually-hidden">Word count, paragraph count, and character count are displayed above and update as you type.</p>
+    </div>
+    <footer>
+        &copy; 2025 Word Counter &mdash; Version 1.0 &mdash; Last updated: May 2025
+    </footer>
 </body>
 </html>
