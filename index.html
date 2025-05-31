@@ -46,6 +46,36 @@
     const copyBtn = document.getElementById('copyBtn');
     const pasteBtn = document.getElementById('pasteBtn');
 
+    function countWords(text) {
+        const words = text.trim().split(/\s+/);
+        return text.trim().length === 0 ? 0 : words.filter(word => word.length > 0).length;
+    }
+
+    function countParagraphs(text) {
+        const paragraphs = text.split(/\n/);
+        return paragraphs.filter(paragraph => paragraph.trim().length > 0).length;
+    }
+
+    function countCharacters(text) {
+        return text.length;
+    }
+
+    function updateCounts() {
+        const text = textInput.value;
+        wordCountDisplay.textContent = `Words: ${countWords(text)}`;
+        paragraphCountDisplay.textContent = `Paragraphs: ${countParagraphs(text)}`;
+        characterCountDisplay.textContent = `Characters: ${countCharacters(text)}`;
+    }
+
+    textInput.addEventListener('input', updateCounts);
+
+    clearBtn.addEventListener('click', function() {
+        textInput.value = '';
+        updateCounts();
+        textInput.focus();
+    });
+
+    updateCounts();
     </script>
 </body>
 </html>
