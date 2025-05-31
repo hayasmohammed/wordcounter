@@ -20,6 +20,22 @@
       <a href="help.html">Help</a>
     </div>
   </nav>
-  
+  <div class="container">
+    <h1>Writing Goals Tracker</h1>
+    <main role="main">
+      <form id="goalForm" style="margin-bottom:1.5rem; text-align:center;">
+        <label for="goalInput"><strong>Set your daily word goal:</strong></label>
+        <input type="number" id="goalInput" min="1" max="10000" step="1" style="width:100px; margin:0 0.5rem;" required>
+        <button type="submit">Set Goal</button>
+      </form>
+      <div class="counters">
+        <div class="counter" id="currentWords">Words: 0</div>
+        <div class="counter" id="goalStatus">Goal: 0</div>
+        <div class="counter" id="progressPercent">Progress: 0%</div>
+      </div>
+    </main>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
