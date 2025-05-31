@@ -192,3 +192,19 @@ nav {
 body {
   padding-top: 80px; 
 }
+
+ul {
+  margin-top: 1rem;
+  margin-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
