@@ -60,7 +60,38 @@
   goalInput.value = savedGoal;
   goalText.value = savedText;
 
-  
+  function countWords(text) {
+    const words = text.trim().split(/\s+/);
+    return text.trim().length === 0 ? 0 : words.filter(word => word.length > 0).length;
+  }
+
+  function updateProgress() {
+    const goal = parseInt(goalInput.value, 10) || 0;
+    const text = goalText.value;
+    const words = countWords(text);
+    currentWords.textContent = `Words: ${words}`;
+    goalStatus.textContent = `Goal: ${goal}`;
+    const percent = goal > 0 ? Math.min(100, Math.round((words / goal) * 100)) : 0;
+    progressPercent.textContent = `Progress: ${percent}%`;
+    localStorage.setItem('writingGoal', goal);
+    localStorage.setItem('writingText', text);
+  }
+
+  goalForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    updateProgress();
+    goalText.focus();
+  });
+
+  goalText.addEventListener('input', updateProgress);
+
+  clearBtn.addEventListener('click', function() {
+    goalText.value = '';
+    updateProgress();
+    goalText.focus();
+  });
+
+    updateProgress();
     </script>
 </body>
 </html>
