@@ -42,5 +42,25 @@
       </div>
     </main>
   </div>
+  <footer>
+    &copy; 2025 Word Counter &mdash; Version 1.0 &mdash; Last updated: May 2025
+  </footer>
+<script>
+  const goalForm = document.getElementById('goalForm');
+  const goalInput = document.getElementById('goalInput');
+  const goalText = document.getElementById('goalText');
+  const currentWords = document.getElementById('currentWords');
+  const goalStatus = document.getElementById('goalStatus');
+  const progressPercent = document.getElementById('progressPercent');
+  const clearBtn = document.getElementById('clearBtn');
+  const copyBtn = document.getElementById('copyBtn');
+
+  let savedGoal = localStorage.getItem('writingGoal') || 500;
+  let savedText = localStorage.getItem('writingText') || '';
+  goalInput.value = savedGoal;
+  goalText.value = savedText;
+
+  
+    </script>
 </body>
 </html>
