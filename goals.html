@@ -35,6 +35,8 @@
       </div>
       <div class="buttons-row">
         <button id="clearBtn" type="button" aria-label="Clear text">Clear</button>
+        <button id="copyBtn" type="button" aria-label="Copy text to clipboard">Copy</button>
+        <button id="pasteBtn" type="button" aria-label="Paste text from clipboard">Paste</button>
       </div>
       <textarea id="goalText" placeholder="Start writing or paste your text here..." aria-label="Writing area" style="display: block; margin-left: auto; margin-right: auto;"></textarea>
       <div style="margin-top:1.5rem; text-align:center;">
@@ -54,6 +56,7 @@
   const progressPercent = document.getElementById('progressPercent');
   const clearBtn = document.getElementById('clearBtn');
   const copyBtn = document.getElementById('copyBtn');
+  const pasteBtn = document.getElementById('pasteBtn');
 
   let savedGoal = localStorage.getItem('writingGoal') || 500;
   let savedText = localStorage.getItem('writingText') || '';
@@ -90,6 +93,29 @@
     updateProgress();
     goalText.focus();
   });
+
+  copyBtn.addEventListener('click', function() {
+  goalText.select();
+  document.execCommand('copy');
+  copyBtn.textContent = 'Copied!';
+  setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1200);
+});
+
+pasteBtn.addEventListener('click', async function() {
+  try {
+    const text = await navigator.clipboard.readText();
+    if (text) {
+      goalText.value += (goalText.value ? '\n' : '') + text;
+      updateProgress();
+      goalText.focus();
+    } else {
+      alert('Clipboard is empty or access was denied.');
+    }
+  } catch (err) {
+    alert('Unable to read clipboard. Please allow clipboard permissions.');
+  }
+});
+
 
     updateProgress();
     </script>

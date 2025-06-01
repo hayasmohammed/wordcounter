@@ -30,6 +30,8 @@
     </div>
     <div class="buttons-row">
       <button id="clearBtn" type="button" aria-label="Clear text">Clear</button>
+      <button id="copyBtn" type="button" aria-label="Copy text to clipboard">Copy</button>
+      <button id="pasteBtn" type="button" aria-label="Paste text from clipboard">Paste</button>
     </div>
     <textarea id="textInput" placeholder="Start typing or paste your text here..." aria-describedby="statsDescription"></textarea>
     <p id="statsDescription" class="visually-hidden">Word count, paragraph count, and character count are displayed above and update as you type.</p>
@@ -74,6 +76,27 @@
         updateCounts();
         textInput.focus();
     });
+
+    copyBtn.addEventListener('click', function() {
+    textInput.select();
+    document.execCommand('copy');
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1200);
+  });
+  pasteBtn.addEventListener('click', async function() {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (text) {
+        textInput.value += (textInput.value ? '\n' : '') + text;
+        updateCounts();
+        textInput.focus();
+      } else {
+        alert('Clipboard is empty or access was denied.');
+      }
+    } catch (err) {
+      alert('Unable to read clipboard. Please allow clipboard permissions.');
+    }
+  });
 
     updateCounts();
     </script>
