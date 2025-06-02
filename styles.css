@@ -188,15 +188,19 @@ nav {
   box-sizing: border-box;
   border-bottom: 1px solid #222;
 }
-
 body {
   padding-top: 80px; 
 }
+
+
+
 
 ul {
   margin-top: 1rem;
   margin-left: 1.25rem;
 }
+
+
 
 li {
   margin-bottom: 0.75rem;
